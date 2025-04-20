@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebWatcher - Aditya TG</title>
+    <link rel="stylesheet" href="../assets/css/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'discord-dark': '#2F3136',
+                        'discord-darker': '#202225',
+                        'discord-accent': '#7289DA',
+                        'discord-light': '#FFFFFF',
+                        'discord-gray': '#B9BBBE',
+                        'discord-hover': '#40444B',
+                        'discord-success': '#43B581',
+                        'discord-danger': '#F04747',
+                        'discord-warning': '#FAA61A',
+                    },
+                    boxShadow: {
+                        'discord-section': '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)',
+                        'discord-card': '0 8px 16px rgba(0, 0, 0, 0.2)',
+                        'discord-glow': '0 0 15px rgba(155, 89, 182, 0.5)'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="dark:bg-discord-dark bg-gray-100 dark:text-discord-light text-gray-800 transition-colors duration-200">
+    <!-- Navigation (Fixed) -->
+    <div class="nav-fixed dark:bg-discord-dark bg-white rounded-b-xl shadow-discord-section transition-shadow duration-200 overflow-hidden">
+        <nav class="flex items-center justify-between h-20 px-4 sm:px-6">
+            <!-- Left side with image and name -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden">
+                    <img src="../assets/images/DP.jpg" alt="Your Name" class="w-full h-full object-cover">
+                </div>
+                <span class="text-discord-accent font-medium text-lg">Aditya TG</span>
+            </div>
+
+            <!-- Right side with toggle button and hamburger menu -->
+            <div class="flex items-center space-x-2">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="px-4 py-4 text-discord-accent hover:bg-discord-hover transition-colors duration-200 flex items-center justify-center">
+                    <!-- Sun icon (shown in dark mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <!-- Moon icon (shown in light mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <!-- Hamburger Menu Icon -->
+                <button id="hamburger-menu" class="px-4 py-4 text-discord-accent transition-colors duration-200 lg:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+
+                <!-- Navigation Links (Hidden on mobile, shown on desktop) -->
+                <div id="nav-links" class="hidden lg:flex items-center space-x-0.2">
+                    <a href="../index.html#hero" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Home</a>
+                    <a href="../index.html#about" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">About</a>
+                    <a href="../index.html#projects" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Portfolio</a>
+                    <a href="../index.html#contact" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Links (Hidden by default) -->
+        <div id="mobile-nav-links" class="lg:hidden hidden bg-white dark:bg-discord-dark shadow-lg">
+            <a href="../index.html#hero" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Home</a>
+            <a href="../index.html#about" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">About</a>
+            <a href="../index.html#projects" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Portfolio</a>
+            <a href="../index.html#contact" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Contact</a>
+        </div>
+    </div>
+
+     <!-- Single Project Section -->
+     <div class="pt-16 pb-16 dark:bg-discord-darker bg-gray-200 transition-colors duration-200">
+        <div class="content-container">
+            <!-- Project Title and Description -->
+            <div class="text-center mb-10">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">WebWatcher</h1>
+                <div class="w-12 h-1 bg-indigo-500 mx-auto mb-6"></div>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray max-w-2xl mx-auto">
+                     Keyword Based Web Monitoring Tool
+                </p>
+            </div>
+
+             <!-- Project Image Carousel -->
+            <div class="mb-12 max-w-4xl mx-auto">
+                <div class="flex items-center justify-between">
+                    <!-- Left Arrow -->
+                    <button id="prev-btn" class="text-discord-accent hover:text-discord-hover focus:outline-none transition-colors duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    
+                    <!-- Image Container -->
+                    <div id="image-carousel" class="relative rounded-lg overflow-hidden shadow-discord-card mx-3 flex-1">
+                        <!-- Images (only first one visible by default) -->
+                        <div class="carousel-item active">
+                            <img src="../assets/images/WebWatcher.png" alt="WebWatcher class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-item hidden">
+                            <video src="../assets/videos/WW/Demo.mp4" controls class="w-full h-full object-cover"></video>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Arrow -->
+                    <button id="next-btn" class="text-discord-accent hover:text-discord-hover focus:outline-none transition-colors duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Dots Indicator (Below Image) -->
+                <div class="flex justify-center mt-4">
+                    <span class="dot bg-discord-accent w-2 h-2 rounded-full opacity-100 cursor-pointer active mx-2"></span>
+                    <span class="dot bg-discord-accent w-2 h-2 rounded-full opacity-40 cursor-pointer mx-2"></span>
+                    
+                    
+                </div>
+            </div>
+
+            <!-- Project Overview -->
+            <div class="space-y-6 mb-10 max-w-4xl mx-auto">
+                <h2 class="text-xl sm:text-2xl font-bold">Project Overview</h2>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    WebWatcher is a full stack web application that automatically monitors websites for specific keywords 
+                    and notifies users when matches are found. Originally conceived during my job search to track company 
+                    career pages, it evolved into a versatile platform for monitoring any content changes across the web from 
+                    job listings to product availability, news articles, and more.
+                </p>
+
+                <h3 class="text-lg sm:text-xl font-bold">Key Features</h3>
+                
+                <h4 class="text-md sm:text-lg font-medium">User Management</h4>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Secure Authentication:</span> Complete sign up/login system using JWT and bcrypt for password hashing</li>
+                    <li><span class="font-medium">User specific Watchlists:</span> Each user maintains their own personalized monitoring setup</li>
+                </ul>
+                
+                <h4 class="text-md sm:text-lg font-medium">Monitoring Capabilities</h4>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Custom Keyword Tracking:</span> Users can define up to 10 keywords they want to monitor</li>
+                    <li><span class="font-medium">Multiple URL Support:</span> Up to 10 URLs can be tracked simultaneously</li>
+                    <li><span class="font-medium">Intelligent Scraping:</span> System parses website content looking for keyword matches</li>
+                </ul>
+                
+                <h4 class="text-md sm:text-lg font-medium">Scanning Options</h4>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Manual Scanning:</span> Users can trigger on demand scans (limited to 4 per day)</li>
+                    <li><span class="font-medium">Automated Monitoring:</span> Background scans run every 6 hours</li>
+                    <li><span class="font-medium">Real time Results:</span> Match details displayed in the user dashboard</li>
+                </ul>
+                
+                <h4 class="text-md sm:text-lg font-medium">Notifications & Alerts</h4>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Email Notifications:</span> Consolidated alerts sent when keywords are found on monitored sites</li>
+                    <li><span class="font-medium">Customizable Alerts:</span> Users can add or remove email notifications based on preference</li>
+                    <li><span class="font-medium">Match Management:</span> Users can review and delete previous matches from their dashboard</li>
+                </ul>
+                
+                <h4 class="text-md sm:text-lg font-medium">User Experience</h4>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Intuitive Dashboard:</span> Clean interface with separate sections for watchlist management and results</li>
+                    <li><span class="font-medium">Feedback System:</span> Built in mechanism for users to submit feedback to improve the application</li>
+                </ul>
+                
+                <h3 class="text-lg sm:text-xl font-bold">Technical Implementation</h3>
+                
+                <h4 class="text-md sm:text-lg font-medium">Backend Architecture</h4>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Node.js & Express:</span> RESTful API handling user authentication, watchlist management, and scraping functions</li>
+                    <li><span class="font-medium">MongoDB with Mongoose:</span> Database design with schemas for users, watchlists, match results, and scan limits</li>
+                    <li><span class="font-medium">Web Scraping:</span> Cheerio for fast HTML parsing with intelligent error handling</li>
+                    <li><span class="font-medium">JWT Authentication:</span> Secure token based user authentication with middleware protection</li>
+                    <li><span class="font-medium">Scheduled Tasks:</span> Node cron for automated periodic scanning</li>
+                </ul>
+                
+                <h4 class="text-md sm:text-lg font-medium">Smart Features</h4>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Daily Scan Limits:</span> Logic to prevent excessive use while providing valuable free functionality</li>
+                    <li><span class="font-medium">Email Deliverability:</span> Properly configured HTML emails with headers to prevent content from being treated as quoted text</li>
+                    <li><span class="font-medium">Error Handling:</span> Robust error management for URL processing, scraping, and API requests</li>
+                </ul>
+                
+                <h4 class="text-md sm:text-lg font-medium">Deployment & Monitoring</h4>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Environment Configuration:</span> Dotenv for secure management of sensitive credentials</li>
+                    <li><span class="font-medium">Scalable Architecture:</span> Code structured for easy maintenance and future feature additions</li>
+                </ul>
+                
+                <h3 class="text-lg sm:text-xl font-bold">Challenges Overcome</h3>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    One of the major technical challenges was managing the scraping process efficiently. I implemented several solutions:
+                </p>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Rate Limiting:</span> Created a daily scan count system to prevent excessive server loads</li>
+                    <li><span class="font-medium">Error Resilience:</span> Added robust error handling for network issues and malformed URLs</li>
+                    <li><span class="font-medium">Notification Management:</span> Developed a consolidated email system that groups matches rather than sending multiple alerts</li>
+                    <li><span class="font-medium">Processing Logic:</span> Designed the scraper to handle various URL formats and invalid inputs</li>
+                </ul>
+                
+                <h3 class="text-lg sm:text-xl font-bold">Key Learnings</h3>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li>Gained practical experience building a complete RESTful API with authentication</li>
+                    <li>Developed deeper understanding of scheduled tasks and background processes in Node.js</li>
+                    <li>Implemented best practices for email deliverability and notification systems</li>
+                    <li>Created a MongoDB schema design that efficiently supports user specific data and monitoring</li>
+                </ul>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray mt-4">
+                    This project demonstrates my ability to build practical, user focused web applications that solve real world 
+                    problems while incorporating security best practices and efficient data processing.
+                </p>
+            </div>
+
+            <!-- Project Links -->
+            <div class="space-y-6 max-w-4xl mx-auto">
+                <h2 class="text-xl sm:text-2xl font-bold">Project Links</h2>
+                <div class="flex space-x-4">
+                    <a href="https://web-watcher.onrender.com" class="text-discord-accent hover:underline">Visit Site</a>
+                    <a href="#" class="text-discord-accent hover:underline">GitHub Repository</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="py-5 text-center dark:bg-discord-dark bg-white dark:text-discord-light text-gray-800 transition-colors duration-200 shadow-inner">
+        <p class="text-sm sm:text-base">© 2025 Aditya. All Rights Reserved.</p>
+    </div>
+
+    <script src="../assets/index.js"></script>
+</body>
+</html>

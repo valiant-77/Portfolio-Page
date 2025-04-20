@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Aditya TG</title>
+    <link rel="stylesheet" href="../assets/css/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'discord-dark': '#2F3136',
+                        'discord-darker': '#202225',
+                        'discord-accent': '#7289DA',
+                        'discord-light': '#FFFFFF',
+                        'discord-gray': '#B9BBBE',
+                        'discord-hover': '#40444B',
+                        'discord-success': '#43B581',
+                        'discord-danger': '#F04747',
+                        'discord-warning': '#FAA61A',
+                    },
+                    boxShadow: {
+                        'discord-section': '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)',
+                        'discord-card': '0 8px 16px rgba(0, 0, 0, 0.2)',
+                        'discord-glow': '0 0 15px rgba(155, 89, 182, 0.5)'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="dark:bg-discord-dark bg-gray-100 dark:text-discord-light text-gray-800 transition-colors duration-200">
+    <!-- Navigation (Fixed) -->
+    <div class="nav-fixed dark:bg-discord-dark bg-white rounded-b-xl shadow-discord-section transition-shadow duration-200 overflow-hidden">
+        <nav class="flex items-center justify-between h-20 px-4 sm:px-6">
+            <!-- Left side with image and name -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden">
+                    <img src="../assets/images/DP.jpg" alt="Your Name" class="w-full h-full object-cover">
+                </div>
+                <span class="text-discord-accent font-medium text-lg">Aditya TG</span>
+            </div>
+
+            <!-- Right side with toggle button and hamburger menu -->
+            <div class="flex items-center space-x-2">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="px-4 py-4 text-discord-accent hover:bg-discord-hover transition-colors duration-200 flex items-center justify-center">
+                    <!-- Sun icon (shown in dark mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <!-- Moon icon (shown in light mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <!-- Hamburger Menu Icon -->
+                <button id="hamburger-menu" class="px-4 py-4 text-discord-accent transition-colors duration-200 lg:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+
+                <!-- Navigation Links (Hidden on mobile, shown on desktop) -->
+                <div id="nav-links" class="hidden lg:flex items-center space-x-0.2">
+                    <a href="../index.html#hero" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Home</a>
+                    <a href="../index.html#about" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">About</a>
+                    <a href="../index.html#projects" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Portfolio</a>
+                    <a href="../index.html#contact" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Links (Hidden by default) -->
+        <div id="mobile-nav-links" class="lg:hidden hidden bg-white dark:bg-discord-dark shadow-lg">
+            <a href="../index.html#hero" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Home</a>
+            <a href="../index.html#about" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">About</a>
+            <a href="../index.html#projects" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Portfolio</a>
+            <a href="../index.html#contact" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Contact</a>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="pt-16 pb-16 dark:bg-discord-darker bg-gray-200 transition-colors duration-200">
+        <div class="content-container">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">PROJECTS</h2>
+                <div class="w-12 h-1 bg-indigo-500 mx-auto mb-4 sm:mb-6"></div>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray max-w-2xl mx-auto px-4 sm:px-0">
+                    Here are some of the projects I've worked on. Each project showcases my skills and experience in various technologies. 
+                </p>
+            </div>
+
+            <!-- Project Cards - Grid Layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0">
+                <!-- Project Card 1 -->
+                <div class="dark:bg-discord-dark bg-white rounded-lg overflow-hidden shadow-discord-card card-hover project-card">
+                    <div class="bg-discord-accent/20 relative">
+                        <img src="../assets/images/HabitTracker.png" alt="Habit Tracker" class="w-full object-contain">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Habit Tracker</h3>
+                        <p class="text-sm dark:text-discord-gray text-gray-600 mb-3">A full stack habit tracking web application</p>
+                        <a href="./proj1.html" class="text-discord-accent text-sm hover:underline">View Project →</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="dark:bg-discord-dark bg-white rounded-lg overflow-hidden shadow-discord-card card-hover project-card">
+                    <div class="bg-discord-accent/20 relative">
+                        <img src="../assets/images/WebWatcher.png" alt="WebWatcher" class="w-full object-contain">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">WebWatcher</h3>
+                        <p class="text-sm dark:text-discord-gray text-gray-600 mb-3">A web application for scraping results from your desired websites.</p>
+                        <a href="./proj2.html" class="text-discord-accent text-sm hover:underline">View Project →</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="dark:bg-discord-dark bg-white rounded-lg overflow-hidden shadow-discord-card card-hover project-card">
+                    <div class="bg-discord-accent/20 relative">
+                        <img src="../assets/images/SummeEase.png" alt="SummerEase" class="w-full object-contain">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">SummeEase</h3>
+                        <p class="text-sm dark:text-discord-gray text-gray-600 mb-3">A web application to summarize and extract highlights.</p>
+                        <a href="./proj3.html" class="text-discord-accent text-sm hover:underline">View Project →</a>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="dark:bg-discord-dark bg-white rounded-lg overflow-hidden shadow-discord-card card-hover project-card">
+                    <div class="bg-discord-accent/20 relative">
+                        <img src="../assets/images/SortingVisualizer.png" alt="E-Commerce Dashboard" class="w-full object-contain">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-xl mb-2">Sorting Visualizer</h3>
+                        <p class="text-sm dark:text-discord-gray text-gray-600 mb-3">An application built using C++ visualizing different sorting algorithms.</p>
+                        <a href="./proj4.html" class="text-discord-accent text-sm hover:underline">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        
+    </div>
+               
+
+               
+
+    <!-- Footer -->
+    
+    <div class="py-5 text-center dark:bg-discord-dark bg-white dark:text-discord-light text-gray-800 transition-colors duration-200 shadow-inner">
+        <p>© 2025 Aditya. All Rights Reserved.</p>
+    </div>
+
+    <script src="../assets/index.js"></script>
+</body>
+</html>
