@@ -3,7 +3,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const app = express();
 const path = require('path');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // Middleware to parse JSON requests
 app.use(express.json());
