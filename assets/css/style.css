@@ -162,3 +162,13 @@
     transform: scale(1.2);
 }
 
+video::-webkit-media-controls {
+    overflow: visible !important;
+  }
+  
+  video:fullscreen {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+ 
