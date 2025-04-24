@@ -274,3 +274,37 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
+
+  function copyEmail(event) {
+    event.preventDefault();
+    
+    // Your actual email to be copied
+    const email = "adityagirish812@gmail.com";
+    const emailLabel = document.getElementById('email-label');
+    const originalText = emailLabel.textContent;
+    
+    navigator.clipboard.writeText(email)
+        .then(() => {
+            // Change text to "Copied!"
+            emailLabel.textContent = "Email Copied!";
+            
+            // Reset text after 2 seconds
+            setTimeout(() => {
+                emailLabel.textContent = originalText;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+}
+
+
+document.getElementById('see-more-btn').addEventListener('click', function() {
+    document.getElementById('short-content').classList.add('hidden');
+    document.getElementById('full-content').classList.remove('hidden');
+});
+
+document.getElementById('see-less-btn').addEventListener('click', function() {
+    document.getElementById('full-content').classList.add('hidden');
+    document.getElementById('short-content').classList.remove('hidden');
+});
