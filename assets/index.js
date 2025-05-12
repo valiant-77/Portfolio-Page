@@ -189,8 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
     // Get the contact form element
     const contactForm = document.querySelector('form[name="contact"]');
@@ -198,6 +196,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
       // Create status message elements
       const formStatus = document.getElementById('form-status');
+      
+      // Set the form action attribute to your Formspree endpoint
+      // Replace 'YOUR_FORMSPREE_ID' with your actual Formspree form ID
+      contactForm.setAttribute('action', 'https://formspree.io/f/xblozrdn');
+      contactForm.setAttribute('method', 'POST');
       
       contactForm.addEventListener('submit', async function(event) {
         event.preventDefault(); // Prevent default form submission
@@ -215,20 +218,16 @@ document.addEventListener('DOMContentLoaded', function() {
         formStatus.classList.add('text-gray-500');
         
         // Collect form data
-        const formData = {
-          name: document.getElementById('name').value,
-          email: document.getElementById('email').value,
-          message: document.getElementById('message').value,
-          subject: 'Portfolio Contact Form Submission'
-        };
+        const formData = new FormData(this);
         
         try {
-            const response = await fetch('/api/contact', {
+            // Send the form data to Formspree
+            const response = await fetch(contactForm.action, {
               method: 'POST',
+              body: formData,
               headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(formData)
+                'Accept': 'application/json'
+              }
             });
             
             const result = await response.json();
@@ -245,8 +244,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 formStatus.classList.add('hidden');
               }, 5000);
             } else {
-              // Show error message
-              formStatus.textContent = `Failed to send message: ${result.error}`;
+              // Show error message based on Formspree response
+              formStatus.textContent = result.error || 'Failed to send message. Please try again later.';
               formStatus.classList.remove('text-gray-500', 'text-green-500');
               formStatus.classList.add('text-red-500');
               
@@ -265,12 +264,11 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
               formStatus.classList.add('hidden');
             }, 5000);
+          } finally {
+            // Reset button state
+            submitButton.innerText = originalButtonText;
+            submitButton.disabled = false;
           }
-           finally {
-          // Reset button state
-          submitButton.innerText = originalButtonText;
-          submitButton.disabled = false;
-        }
       });
     }
   });

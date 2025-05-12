@@ -1,4 +1,4 @@
-require('dotenv').config();
+/*require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const app = express();
@@ -57,4 +57,4 @@ app.post('/api/contact', async (req, res) => {
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-});
+});*/
