@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker - Aditya TG</title>
+    <link rel="stylesheet" href="../assets/css/output.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'discord-dark': '#2F3136',
+                        'discord-darker': '#202225',
+                        'discord-accent': '#7289DA',
+                        'discord-light': '#FFFFFF',
+                        'discord-gray': '#B9BBBE',
+                        'discord-hover': '#40444B',
+                        'discord-success': '#43B581',
+                        'discord-danger': '#F04747',
+                        'discord-warning': '#FAA61A',
+                    },
+                    boxShadow: {
+                        'discord-section': '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)',
+                        'discord-card': '0 8px 16px rgba(0, 0, 0, 0.2)',
+                        'discord-glow': '0 0 15px rgba(155, 89, 182, 0.5)'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="dark:bg-discord-dark bg-gray-100 dark:text-discord-light text-gray-800 transition-colors duration-200">
+    <!-- Navigation (Fixed) -->
+    <div class="nav-fixed dark:bg-discord-dark bg-white rounded-b-xl shadow-discord-section transition-shadow duration-200 overflow-hidden">
+        <nav class="flex items-center justify-between h-20 px-4 sm:px-6">
+            <!-- Left side with image and name -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden">
+                    <img src="../assets/images/DP.jpg" alt="Your Name" class="w-full h-full object-cover">
+                </div>
+                <span class="text-discord-accent font-medium text-lg">Aditya TG</span>
+            </div>
+
+            <!-- Right side with toggle button and hamburger menu -->
+            <div class="flex items-center space-x-2">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="px-4 py-4 text-discord-accent hover:bg-discord-hover transition-colors duration-200 flex items-center justify-center">
+                    <!-- Sun icon (shown in dark mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <!-- Moon icon (shown in light mode) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+
+                <!-- Hamburger Menu Icon -->
+                <button id="hamburger-menu" class="px-4 py-4 text-discord-accent transition-colors duration-200 lg:hidden">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+
+                <!-- Navigation Links (Hidden on mobile, shown on desktop) -->
+                <div id="nav-links" class="hidden lg:flex items-center space-x-0.2">
+                    <a href="../index.html#hero" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Home</a>
+                    <a href="../index.html#about" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">About</a>
+                    <a href="../index.html#projects" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Projects</a>
+                    <a href="../index.html#contact" class="px-3 py-4 dark:hover:bg-discord-hover hover:bg-gray-100 transition-colors duration-200">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation Links (Hidden by default) -->
+        <div id="mobile-nav-links" class="lg:hidden hidden bg-white dark:bg-discord-dark shadow-lg">
+            <a href="../index.html#hero" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Home</a>
+            <a href="../index.html#about" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">About</a>
+            <a href="../index.html#projects" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Projects</a>
+            <a href="../index.html#contact" class="block px-6 py-4 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-discord-hover transition-colors duration-200">Contact</a>
+        </div>
+    </div>
+
+     <!-- Single Project Section -->
+     <div class="pt-16 pb-16 dark:bg-discord-darker bg-gray-200 transition-colors duration-200">
+        <div class="content-container">
+            <!-- Project Title and Description with Jump Link -->
+            <div class="text-center mb-10">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Job Application Tracker</h1>
+                <div class="w-12 h-1 bg-indigo-500 mx-auto mb-6"></div>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray max-w-2xl mx-auto mb-4">
+                    Full Stack Job Application Tracking System with Automated Data Extraction
+                </p>
+                <!-- Scroll to links section -->
+                <a href="#project1-links" class="inline-flex items-center text-discord-accent hover:underline transition-all duration-200">
+                    <span>View Project Links</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </a>
+            </div>
+            
+
+            <!-- Project Image Carousel -->
+            <div class="mb-12 max-w-4xl mx-auto">
+                <div class="flex items-center justify-between">
+                    <!-- Left Arrow -->
+                    <button id="prev-btn" class="text-discord-accent hover:text-discord-hover focus:outline-none transition-colors duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    
+                    <!-- Image Container -->
+                    <div id="image-carousel" class="relative rounded-lg overflow-hidden shadow-discord-card mx-3 flex-1">
+                        <!-- Images (only first one visible by default) -->
+                        <div class="carousel-item active">
+                            <img src="../assets/images/JobTrailIndex.png" alt="JobTrailIndex" class="w-full h-full object-cover">
+                        </div>
+                        <div class="carousel-item hidden">
+                            <img src="../assets/images/JobTrailDashboard.png" alt="JobTrailDashboard" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    
+                    <!-- Right Arrow -->
+                    <button id="next-btn" class="text-discord-accent hover:text-discord-hover focus:outline-none transition-colors duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Dots Indicator (Below Image) -->
+                <div class="flex justify-center mt-4">
+                    <span class="dot bg-discord-accent w-2 h-2 rounded-full opacity-100 cursor-pointer active mx-2"></span>
+                    <span class="dot bg-discord-accent w-2 h-2 rounded-full opacity-40 cursor-pointer mx-2"></span>
+                    
+                </div>
+            </div>
+
+            <!-- Project Overview -->
+            <div class="space-y-6 mb-10 max-w-4xl mx-auto">
+                <h2 class="text-xl sm:text-2xl font-bold">Project Overview</h2>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    This is a full stack job application tracking system designed to automate and streamline the job search process. The platform extracts job details automatically from URLs and provides comprehensive tracking capabilities for job seekers.
+                </p>
+
+                <h3 class="text-lg sm:text-xl font-bold">Why I Built This</h3>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    Managing job applications across multiple platforms manually is time consuming and error prone. Existing solutions lack automation and meaningful insights. I built this system to solve these problems by combining automated data extraction with intelligent tracking.
+                </p>
+                
+                <h3 class="text-lg sm:text-xl font-bold">Tech Stack</h3>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li><span class="font-medium">Frontend:</span> HTML, Tailwind CSS, JavaScript</li>
+                    <li><span class="font-medium">Backend:</span> Node.js, Express.js</li>
+                    <li><span class="font-medium">Database:</span> MongoDB with Mongoose</li>
+                    <li><span class="font-medium">Authentication:</span> JWT with bcrypt password hashing</li>
+                    <li><span class="font-medium">Web Scraping:</span> Custom JobScraper class for automated job detail extraction</li>
+                    <li><span class="font-medium">Email Integration:</span> Nodemailer for feedback system</li>
+                    <li><span class="font-medium">Deployment:</span> Hosted on Render</li>
+                </ul>
+                
+                <h3 class="text-lg sm:text-xl font-bold">Key Features</h3>
+                
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold">Secure User Management:</h4>
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                            Complete user account system with authentication and data protection
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold">One-Click Job Tracking:</h4>
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                            Simply paste a job posting URL and the system automatically extracts and stores all relevant details including company name, position, requirements, and salary information
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold">Flexible Status Management:</h4>
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                            Create and customize application statuses (Applied, Interview Scheduled, Rejected, etc.) to match your workflow
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold">Manual Entry Support:</h4>
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                            Add job applications manually when URLs aren't available, with comprehensive form fields for complete tracking
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold">Centralized Dashboard:</h4>
+                        <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                            View all job applications in an organized table format with sorting and filtering capabilities
+                        </p>
+                    </div>
+                </div>
+                
+                <h3 class="text-lg sm:text-xl font-bold">Highlights</h3>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li>Built end to end web scraping solution handling multiple job platforms</li>
+                    <li>Implemented secure authentication system protecting user data</li>
+                    <li>Designed scalable RESTful API with proper error handling</li>
+                    <li>Created automated job detail extraction reducing manual entry</li>
+                    <li>Developed flexible status system allowing user customization</li>
+                    <li>Integrated email communication for user feedback</li>
+                    <li>Built comprehensive input validation and security middleware</li>
+                </ul>
+                
+                <h3 class="text-lg sm:text-xl font-bold">Future Enhancements</h3>
+                <ul class="list-disc pl-6 space-y-2 text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    <li>Analytics dashboard with visual application trends</li>
+                    <li>Push notifications for deadlines and follow ups</li>
+                    <li>Mobile application for on the go access</li>
+                    <li>Integration with popular job boards for direct applications</li>
+                    <li>Resume version tracking and automated follow up templates</li>
+                </ul>
+
+                <h3 class="text-lg sm:text-xl font-bold">Conclusion</h3>
+                <p class="text-base sm:text-lg text-gray-600 dark:text-discord-gray">
+                    This project showcases my ability to build comprehensive full stack solutions that solve real world problems. The combination of automation, security, and user experience demonstrates production ready development skills while delivering genuine value to job seekers managing their career journey.
+                </p>
+            </div>
+
+            <!-- Project Links -->
+            <div id="project1-links" class="space-y-6 max-w-4xl mx-auto">
+                <h2 class="text-xl sm:text-2xl font-bold">Project Links</h2>
+                <div class="flex space-x-4">
+                    <a href="https://apps77.github.io/JobTrail/" class="text-discord-accent hover:underline">Visit Site</a>
+                    <a href="https://github.com/valiant-77/JobTrail.git" class="text-discord-accent hover:underline">GitHub Repository</a>
+                </div>
+            </div>       
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="py-5 text-center dark:bg-discord-dark bg-white dark:text-discord-light text-gray-800 transition-colors duration-200 shadow-inner">
+        <p class="text-sm sm:text-base">© 2025 Aditya. All Rights Reserved.</p>
+    </div>
+
+    <script src="../assets/index.js"></script>
+</body>
+</html>
